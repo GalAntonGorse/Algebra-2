@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{array}
+\usepackage{siunitx}
 %\usepackage{mdframed}
 %\usepackage{thmbox}
 
@@ -1016,6 +1017,7 @@ Lahko pa bi vzeli tudi neskončno družino grup, kolobarjev, itd.
   Torej gre za običajno računanje z zaporedji, ki ga poznamo iz matematične analize.
 \end{zgled}
 
+\clearpage
 \section{Primeri grup in kolobarjev}
 
 \subsection{Cela števila}
@@ -1484,6 +1486,7 @@ V prvem primeru definiramo $D_{4}$ kot grupo simetrij pravokotnika, ki ni kvadra
 Sestavljajo jo elementi $1$, $r$, $z$ in $rz$, kjer je $zr = rz$, zato je ta grupa Abelova.
 Diedrsko grupo $D_2$ pa sestavljata elementa $1$ in $r$, kjer je $r^2 = 1$.
 
+\clearpage
 \section{Homomorfizmi}
 
 \subsection{Izomorfnost grup in ciklične grupe}
@@ -2008,6 +2011,7 @@ V dokazu izreka smo videli, da je v obeh primerih $\im \varphi$ enak prapolju po
 Torej lahko zaključimo, da če ima polje $F$ karakteristiko $0$, je njegovo prapolje izomorfno $\Q$,
 če pa ima karakteristiko $p$, pa je njegovo prapolje izomorfno $\Z_p$.
 
+\clearpage
 \section{Kvocientne strukture}
 
 \subsection{Odseki in Lagrangev izrek}
@@ -2840,6 +2844,7 @@ direktnem produktu kolobarjev $I_1 \times \dots \times I_m$.
 \end{dokaz}
 Vse, kar smo povedali za produkte in vsote v kolobarjih, velja tudi za algebre.
 
+\clearpage
 \section{Končne grupe}
 
 \subsection{Posledice Lagrangevega izreka}
@@ -3355,6 +3360,7 @@ $$\Z_{p^{k_1}} \oplus \Z_{p^{k_2}} \oplus \dots \oplus \Z_{p^{k_r}} \cong \Z_{p^
   $\Z \oplus \Z \oplus \dots \oplus \Z.$
 \end{opomba}
 
+\clearpage
 \section{Komutativni kolobarji}
 
 \subsection{Deljivost v kolobarju polinomov}
@@ -3801,6 +3807,7 @@ da sta si za vsak $i$ elementa $p_i$ in $q_{\sigma(i)}$ asociirana.
 V tem razdelku smo dokazali, da so kolobarji $\Z$, $F[X]$ in $\Z[X]$ evklidski,
 zato glavni in posledično tudi z enolično faktorizacijo.
 
+\clearpage
 \section{Ničle polinomov in razširitve polj}
 
 \subsection{Algebraični in transcendentni elementi}
@@ -3941,9 +3948,9 @@ kjer je $\lambda \in F$ in $x \in E$. Takoj lahko vidimo, da to ustreza vsem aks
   \begin{align*}
     \sum_{i = 1} ^m \sum_{j = 1} ^n \lambda_{ij} a_i b_j = 0 &\Rightarrow \sum_{i = 1} ^m \left( \sum_{j = 1} ^n \lambda_{ij} a_i \right) b_j = 0\\
     &\Rightarrow \sum_{i = 1}^n \lambda_{ij} a_i = 0,\ \forall j\\
-    &\Rightarrow \lambda_{ij} = 0,\ \forall i, j.
+    &\Rightarrow \lambda_{ij} = 0,\ \forall i, j.  \qedhere
   \end{align*}
-  \qedhere
+
 \end{dokaz}
 
 \begin{posledica}
@@ -3966,7 +3973,295 @@ kjer je $\lambda \in F$ in $x \in E$. Takoj lahko vidimo, da to ustreza vsem aks
 \end{trditev}
 
 \begin{dokaz}
-  DOPOLNI
+  Naj bo $[E : F] = n < \infty$ in vzemimo $a \in E$. Potem so $1, a, \dots, a^n \in E$
+  in ker je teh elementov $n + 1$, so linearno odvisni. Torej obstajajo koeficienti $\lambda_0, \lambda_1, \dots, \lambda_n \in F$,
+  tako da je $\lambda_0 + \lambda_1 a + \dots + \lambda_n a^n = 0.$
+  To pomeni, da je $a$ ničla polinoma $f(X) = \lambda_0 + \lambda_1 X + \dots + \lambda_n X^n \neq 0$.
 \end{dokaz}
+
+Kot bomo videli, pa obrat te trditve ne velja.
+
+\begin{opomba}
+  Iz dokaza vidimo, dqa iz $[E : F] = n$ sledi, da je stopnja algebraičnosti poljubnega elementa $a \in E$
+  manjša ali enaka $n$.
+\end{opomba}
+
+\begin{zgled}
+  Ker je $[\C : \R] = 2$, je vsak $z \in \C$ algebraičen stopnje manj ali enako $2$
+  (vemo že, da je minimalni polinom za $z \in \C \setminus \R$ kar $X^2 - (z + \overline{z}) X + z \overline{z}$).
+\end{zgled}
+
+Naj bo $F[X]$ kolobar polinomov in $F(X)$ polje racionalnih funkcij. Vzemimo $F \subseteq E$ in $a \in E$.
+Nato s $F[a]$ označimo podkolobar $E$, generiran s $F$ in $a$, s $F(a)$ pa podpolje $E$,
+generirano s $F$ in $a$. Očitno je $F[a] \subseteq F(a)$. Hitro vidimo, da velja 
+$F[a] = \{f(a)\ |\ f(x) \in F[X]\}$ in $F(a) =\{x y^{-1}\ |\ x, y \in F[a],\ y \neq 0\}$.
+Polje $F(a)$ imenujemo polje s priključitvijo elementa $a$ polju $F$.
+Na enak način definiramo tudi $F[a_1, a_2, \dots, a_n]$ in $F(a_1, a_2, \dots, a_n)$,
+kjer so $a_1, a_2, \dots, a_n \in E$.
+
+\begin{definicija}
+  Element $a$ polja $F(a)$ imenujemo primitivni element. Ta ni enolično določen.
+\end{definicija}
+
+\begin{zgled}
+  $$\Q(i) = \left\lbrace \frac{f(i)}{g(i)}\ \Big|\ f(X), g(X) \in \Q [X],\ q(i) \neq 0 \right\rbrace= \{a + bi\ |\ a, b \in \Q \}$$
+\end{zgled}
+
+\begin{izrek}
+  Naj bo $E$ razširitev $F$. Če je $a \in E$ algebraičen stopnje $n$ nad $F$, potem je 
+  $$F(a) = F[a] = \{\lambda_0 + \lambda_1 a + \dots + \lambda_n a^{n - 1}\ |\ \lambda_i \in F\}.$$
+  Ta razširitev je končna in velja $[F(a) : F] = n.$
+\end{izrek}
+
+\begin{zgled}
+  Naj bo $p$ praštevilo in $n \in \N$. Potem je $\sqrt[n]{p}$ je algebraično število stopnje $n$ in 
+  $$\Q (\sqrt[n]{p}) = \left\lbrace \lambda_0 + \lambda_1 \sqrt[n]{p} + \lambda_2 \sqrt[n]{p^2} + \dots + \lambda_{n - 1} \sqrt[n]{p^{n - 1}}\ |\ \lambda_i \in \Q \right\rbrace.$$
+\end{zgled}
+
+\begin{dokaz}
+  Vzemimo neničeln element $f(a) \in F[a]$, kjer je $f(X) \in F[X]$.
+  Dokažimo, da je $f(a)^{-1} \in F[a]$. Naj bo $p(X)$ minimalni polinom $a$.
+  Iz $f(a) \neq 0$ sledi, da $p$ ne deli $f$. Ker pa je $p(X)$ nerazcepen, sta ta dva polinoma tuja.
+  Torej obstajata polinoma $g(X), h(X) \in F[X]$, tako da je $p(X) g(X) + f(X) h(X) = 1$.
+  Od tod pa sledi $f(a) h(a) = 1$ in zato $f(a)^{-1} = h(a) \in F[a]$, s čimer smo dokazali $F[a] =F(a)$.
+  
+  Naj bo $f(a)$ kot prej in $f(X) = q(X) p(X) + r(X)$, kjer je $r(X) = 0$ ali pa $\mathrm{st} (r (X)) < n = \mathrm{st} (p (X))$.
+  Potem je $f(a) = q(a) p(a) + r(a) = r(a)$, torej je res $$F(a) = F[a] = \{\lambda_0 + \lambda_1 a + \dots + \lambda_n a^{n - 1}\ |\ \lambda_i \in F\}.$$
+  To pomeni, da je množica $\{1, a, \dots, a^{n - 1}\}$ ogrodje $F(a)$ nad $F$.
+  Ker je stopnja algebraičnosti elementa $a$ enaka $n$, je ta množica tud linearno neodvisna in zato baza.
+\end{dokaz}
+
+
+  Naj bo $F \subseteq E$ in $a \in E$. Potem je preslikava $\varphi: F[X] \to F[a]$,
+  dana s predpisom $\varphi(f(X)) = f(a)$, homomorfizem kolobarjev (pravimo ji evalvacijski homomorfizem).
+Očitno je to epimorizem, zato po izreku o izomorfizmu velja $\quot{F[X]}{Ker \varphi} \cong F[a]$.
+Če je $a$ algebraičen, je $\ker \varphi = (p(X))$, kjer je $p(X)$ minimalni polinom.
+Ker pa je $p(X)$ nerazcepen, je $(p(X))$ maksimalen ideal, zato je $\quot{F[X]}{(p(X))}$ polje.
+Torej imamo $\quot{F[X]}{(p(X))} \cong F[a] = F(a)$. V primeru, ko pa je $a$ transcendenten,
+pa je $\ker \varphi = \emptyset$ in zato $F[X] \cong F[a]$, pri čemer je izomorfizem kar $f(X) \mapsto f(a)$.
+Ta predpis pa lahko razširimo do izomorfizma $F(X) \cong F(a)$ z očitnim predpisom $\frac{f(X)}{g(X)} \mapsto f(a) g(a)^{-1}$.
+
+\begin{posledica}
+  Če je $a \in E$ algebraičen nad $E$, potem je njegovo število algebraičnosti enako $[F(a) : F]$.
+\end{posledica}
+
+\begin{posledica}
+  Naj bo $a$ kot v prejšnji posledici in $L$ vmesno polje, tako da je $F \subseteq L \subseteq E$.
+  Potem je $[L(a) : L] \leq [F(a) : F]$.
+\end{posledica}
+
+\begin{dokaz}
+  Če je $a$ algebraičen nad $F$, potem je tudi algebraičen nad $L$ in njegova stopnja algebraičnosti nad $L$ je kvečjemu manjša 
+  od stopnje algebraičnosti nad $F$. Nato uporabimo prvo posledico.
+\end{dokaz}
+
+\begin{opomba}
+  Naj bosta $a, b \in E$. Potem je $F(a, b) = (F(a)) (b)$, in, nekoliko splošneje, 
+  $F(a_1, \dots, a_n) = (F(a_1, \dots, a_k)) (a_{k + 1}, \dots, a_n)$.
+\end{opomba}
+
+\begin{izrek}
+  Naj bodo $a_1, \dots, a_n \in E$ algebraični nad $F$. Potem je $F(a_1, \dots, a_n)$
+  končna razširitev polja $F$ in $F(a_1, \dots, a_n) = F[a_1, \dots, a_n]$.
+\end{izrek}
+
+\begin{dokaz}
+  Dokaz poteka z indukcijo na $n$. Bazni korak smo že pokazali, zato predpostavimo, da je 
+  $L = F(a_1, \dots, a_{n - 1})$ končna razširitev $F$ in $F(a_1, \dots, a_{n - 1}) = F[a_1, \dots, a_{n - 1}] = L$.
+  Potem je $L(a_n) = F(a_1, \dots, a_n)$ končna razširitev $L$ po prejšnjem izreku in zato je tudi končna razširitev $F$
+  (po indukcijski predpostavki). Prav tako pa iz prejšnjega izreka vemo, da so elementi v $L(a_n)$
+  oblike 
+  \begin{equation*}
+    \sum_{i = 0}^m l_i a_m ^i = \sum_{i = 0}^m f_i (a_1, \dots, a_{n - 1}) a_n ^i = f(a_1, \dots, a_n) \qedhere
+  \end{equation*}
+\end{dokaz}
+
+\begin{zgled}
+  Oglejmo si polje $\Q (\sqrt{2}, \sqrt{3}) = (\Q (\sqrt{2})) (\sqrt{3})$.
+  Takoj lahko vidimo, da je množica $\{1, \sqrt{2}, \sqrt{3}, \sqrt{6}\}$ ogrodje, zato je 
+  $[\Q(\sqrt{2}, \sqrt{3}) : \Q(\sqrt{2})] [\Q (\sqrt{2}) : \Q] = [\Q (\sqrt{2}, \sqrt{3}) : \Q] \leq 4$.
+  Dokažimo še, da je to tudi baza.
+  Ker je $[\Q (\sqrt{2}) : \Q] = 2$, je dovolj dokazati, da je $[\Q(\sqrt{2}, \sqrt{3}) : \Q(\sqrt{2})] > 1$, torej 
+  da $\sqrt{3}$ ni oblike $a + b \sqrt{2}$, kjer sta $a, b \in \Q$. To pa je očitno.
+  Sedaj vemo, da je $[\Q (\sqrt{2}, \sqrt{3}) : \Q] \leq 4$, dokazali pa bomo še, da je 
+  $\Q (\sqrt{2}, \sqrt{3}) = \Q (\sqrt{2} + \sqrt{3})$. Označimo $a = \sqrt{2} + \sqrt{3}$ in pokažimo, da je $\sqrt{2} \in \Q (a)$.
+  Res, vemo da je $a - \sqrt{2} = \sqrt{3}$ in s kvadriranjem dobimo $a^2 - 2 a\sqrt{2} +2 = 3$,
+  od koder pa sledi $\sqrt{2} = \frac{a - a^{-1}}{2} \in \Q (a)$.
+\end{zgled}
+
+Izkaže se, da je vsaka končna razširitev polja $F$ s katakteristiko $0$ oblike $F(a)$
+za nek algebraičen element $a$. To nam zagotavlja izrek o primitivnem elementu, ki pa ga ne bomo dokazali.
+
+\begin{posledica}
+  Naj bo $E \supseteq F$. Množica vseh elementov $E$, ki so algebraični nad $F$, je podpolje $E$.
+\end{posledica}
+
+\begin{dokaz}
+  Naj bo to množica $A$. Očitno je $A \supset F$, zato je $A \neq \{0\}$. Če sta $a, b \in A$, potem je 
+  $F(a, b) \subseteq A$ končna razširitev polja $F$, zato velja $a -b, ab, a^{-1} \in A$. S tem smo trditev dokazali.
+\end{dokaz}
+
+\begin{zgled}
+  Množica vseh algebraičnih števil je algebraična razširitev polja $\Q$, vendar pa ni končna razširitev.
+  Če bi bila, bi bila stopnja razširitve deljiva z $n = [\Q (\sqrt[n]{2}) : \Q]$ za vsak $n \in \N$,
+  kar pa je seveda nemogoče.
+\end{zgled}
+
+\subsection{Konstrukcije z ravnilom in šestilom}
+
+V tem razdelku si bomo ogledali uporabo teorije, ki smo izpeljali. Dokazali bomo, da z ravnilom in šestilom ne moremo:
+\begin{enumerate}
+  \item konstruirati kocke z dvakratno prostornino dane kocke.
+  \item razdeliti kota na tri enake dele.
+  \item konstruirati kvadrata z enako ploščino kot dani krog.
+\end{enumerate}
+Najprej pojasnimo, kaj mislimo pod "`konstrukcijo z ravnilom in šestilom."'
+Z ravnilom lahko potegnemo premico skozi dani točki $S$ in $T$, s šestilom pa lahko narišemo krožnico 
+s središčem v dani točki $S$ in polmerom enakim dolžini daljice z danima krajiščema $T$ in $T'$.
+Na začetku imamo dve točki, iz katerih nato s presečišči premic in kržnic konstruiramo nove.
+Sedaj lahko zgornje primere prevedemo na naslednje:
+\begin{enumerate}
+  \item iz točk $T_1= (0, 0)$ in $T_2 = (1, 0)$ konstruiraj točko $Z = (\sqrt[3]{2}, 0)$.
+  \item iz točk $T_1 = (0, 0), T_2 = (1, 0)$ in $T_3 = (\cos \ang{60}, \sin \ang{60})$ konstruiraj točko $Z = (\cos \ang{20}, \sin \ang{20})$.
+  \item iz točk $T_1 = (0, 0)$ in $T_2 = (1, 0)$ konstruiraj $Z = (\sqrt{\pi}, 0).$
+\end{enumerate}
+Sedaj preidimo na splošen primer. Naj bo $\mathcal{T} = \{T_1, T_2, \dots\}$ množica točk v ravnini 
+z vsaj dvema elementoma. Zanimajo nas lastnosti točk, ki jih v končnem številu korakov dobimo s konstrukcijami z ravnilom in šestilom iz $\mathcal{T}$.
+V prvem koraku dobimo točko $A$, za katero velja ena izmed lastnosti:
+\begin{itemize}
+  \item[$\mathbf{(pp)}$] $A$ je presečišče dveh premic dobljenih iz $\mathcal{T}$.
+  \item[$\mathbf{(pk)}$] $A$ je presečišče premice in krožnice, dobljenih iz $\mathcal{T}$.
+  \item[$\mathbf{(kk)}$] $A$ je presečišče dveh krožnic, dobljenih iz $\mathcal{T}$.
+\end{itemize}
+V drugem koraku dobimo točko $B$ na enak način iz $\mathcal{T} \cup \{A\}$.
+Točkam, ki jih dobimo na ta način po končnem številu korakov, rečemo konstruirane točke iz $\mathcal{T}$.
+Sedaj vzemimo podpolje $F \subseteq \R$, tako da je $\mathcal{T} \subseteq F \times F$.
+Ker ja takih polj lahko več, naj bo $F$ polje, generirano z vsemi koordinatami točk iz $\mathcal{T}$.
+Pri prvem in tretjem problemu bi tako bilo polje $F = \Q$, pri tretjem pa $F = \Q (\sqrt{3})$.
+
+\begin{izrek}
+  Naj bo $\mathcal{T}$ množica točk v ravnini in naj bo $F$ tako podpolje $\R$,
+  da je $\mathcal{T} \subseteq F \times F$. Če je točka $Z = (a, b)$ konstruirana iz množice $\mathcal{T}$,
+  potem sta števili $a$ in $b$ algebraični nad $F$ in njuna stopnja algebraičnosti je potenca števila $2$.
+\end{izrek}
+
+\begin{dokaz}
+  Naj bo $A$ točka kot prej. Dokazali bomo, da obstaja tako polje $L \supset F$, da je $A \in L \times L$
+  $[L : F] \in \{1, 2, 4\}.$ Sedaj trditev ponovimo za točko $B$, kjer množico $\mathcal{T}$ zamenjamo z $\mathcal{T \cup A}$,
+  polje $F$ pa z $L$. Ponovno dobimo polje $M$, tako da je $B \in M \times M$ in $[M : L] \in \{1, 2, 4\}$.
+   S tem dobimo $[M : F] = [M : L] [L : F] = 2^u \times 2^v = 2^{u + v}$. Ta argument ponavljamo, dokler
+   v končnem številu korakov ne pridemo do točke $Z = (a, b)$ in take razširitve $E \supset F$, da je $Z \in E \times E$.
+   Seveda velja $[E : F] = 2^r$ za neki $r \geq 0$ in ker $[F(a) : F]$ deli $[E : F]$, je tudi stopnja algebraičnosti elementa $a$ potenca $2$.
+   Enako seveda velja tudi za $b$. Osredotočimo se lahko torej na točko $A$ in iskanje polja $L$.
+   Pri tem moramo obravnavati vse primere $\mathbf{(pp)}$, $\mathbf{(pk)}$ in $\mathbf{(kk)}$.
+   Vemo, da ima premica skozi točki iz $\mathcal{T}$ enačbo $y = \alpha x + \beta$ ali $x = \gamma$, kjer so $\alpha, \beta, \gamma \in F$.
+   Podobno ima krožnica iz točk $\mathcal{T}$ enačbo $x^2 + y^2 = \delta x + \epsilon y + \zeta$,
+   kjer so $\delta, \epsilon, \zeta \in F$. Za polje $L$ vzamemo kar $F(x, y)$, kjer sta $x$ in $y$ koordinati 
+   presečišča dveh izmed teh enačb, in nato lahko za vsakega od treh primerov hitro preverimo, da naša trditev drži.
+\end{dokaz}
+
+\begin{posledica}
+  Iz dane kocke z ravnilom in šestilom ne moremo konstruirati kocke z dvakratno prostornino.
+\end{posledica}
+
+\begin{dokaz}
+  Problem je ekvivalenten temu, da točko $(\sqrt[3]{2}, 0)$ konstruiramo iz množice $\mathcal{T} = \{(0, 0), (1, 0)\}$.
+  To pa je nemogoče, saj je stopnja algebraičnosti števila $\sqrt[3]{2}$ nad $\Q$ enaka $3$.
+\end{dokaz}
+
+\begin{posledica}
+  Kota $\ang{60}$ z ravnilom in šestilom ne moremo razdeliti na tri enake dele.
+\end{posledica}
+
+\begin{dokaz}
+  Pokažimo, da točke $Z = (\cos \ang{20}, \sin \ang{20})$ ne moremo konstruirati iz množice 
+  $$\mathcal{T} = \left\lbrace (0, 0), (1, 0), \left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right) \right\rbrace.$$ 
+  Če bi jo lahko, bi bila stopnja algebraičnosti števila $u = \cos \ang{20}$ nad poljem $\Q (\sqrt{3})$ potenca števila $2$,
+  mi pa bomo dokazali, da je v resnici $3$. Iz realnega dela enakosti $\cos 3\varphi + i \sin 3\varphi = (\cos\varphi + i \sin \varphi)^3$
+  dobimo formulo $\cos 3 \varphi = 4 \cos^3 \varphi - 3 \cos \varphi$ in če vanjo vstavimo $\varphi = \ang{20}$, 
+  dobimo $\frac{1}{2} = 4 u^3 - 3u$. Sedaj moramo dokazati le še, da je polinom $p(X) = 8 X^3 - 6X - 1$ nerazcepen nad $\Q (\sqrt{3})$.
+  Denimo nasprotno; potem ima $p$ ničlo $a \in \Q (\sqrt{3})$ in lahko zapišemo $a = 2q + 2r \sqrt{3}$, kjer sta $q, r \in \Q$.
+  Ker sta $1$ in $\sqrt{3}$ linearno neodvisni nad $\Q$, dobimo enačbi 
+  $$q^3 + 9 qr^2 - 3q - 1 \quad \mathrm{in} \quad r(q^2 + r^2 - 1) = 0.$$
+  Ne glede na to, kateri faktor v drugi je ničeln, lahko prvo enačbo prevedemo na obliko $s^3 - 3s + 1$, kjer je $s \in \Q$.
+  Če zapišemo $s = \frac{m}{n}$, kjer sta si $m$ in $n$ tuji celi števili. Od tod pa sledi 
+  $m\ |\ n^3$ in $n\ |\ m^3$ in ker sta to tuji števili, sta lahko enaki le $1$ ali pa $-1$.
+  To pa ni rešitev enačbe, zato smo prišli v protislovje.
+\end{dokaz}
+
+\begin{posledica}
+  Iz danega kroga z ravnilom in šestilom ne moremo konstruirati kvadrata z enako ploščino.
+\end{posledica}
+
+\begin{dokaz}
+  Tokrat je $Z = (\sqrt{\pi}, 0)$ in $\mathcal{T} = \{(0, 0), (1, 0)\}$. Dovolj je dokazati, da število $\sqrt{\pi}$
+  ni algebraično. Če bi bilo, bi bilo algebraično tudi število $\pi$, kar pa ni res.
+\end{dokaz}
+
+\subsection{Kratnosti ničel polinomov}
+
+\begin{lema}
+  Naj bo $a \in E$ ničla polinoma $f(X) \in F[X]$. Potem obstaja tak polinom $g(X) \in E[X]$,
+  da je $f(X) = (X - a) g(X)$.
+\end{lema}
+
+Če je $f(X) = (X - a) g(X)$ in $g(a) \neq 0$, potem je $a$ enostavna ničla polinoma $f(X)$.
+Z večkratno uporabo zgornje leme pridemo do naslednje trditve.
+
+\begin{trditev}
+  Neničelni polinom $f(X) \in F[X]$ ima v vsaki razširitvi $F$ največ toliko ničel, štetih z večkratnostjo,
+  kot je stopnja $f$.
+\end{trditev}
+
+\begin{definicija}
+  Odvod polinoma $f(X) = a_0 + a_1 X + \dots + a_n X^n \in F[X]$ je polinom
+  $f'(X) = a_1 + 2 a_2 X + \dots + n a_n X^{n - 1} \in F[X]$.
+\end{definicija}
+
+Odvod polinoma upošteva pričakovani lastnosti, torej $(f(X) + g(X))' = f'(X) + g'(X)$
+in $(f(X) g(X))' = f'(X) g(X) + f(X) g'(X)$. V poljih s ničelno karakteristiko
+velja tudi $\mathrm{st} (f'(X)) = \mathrm{st} (f(X)) - 1$, če je $f(X)$ nekonstanten.
+V splošnem pa to ne velja nujno; v $\Z_p$ je na primer $(X^p)' = 0.$
+
+\begin{izrek}
+  Naj bo $F$ polje s ničelno karakteristiko in $p(X) \in F[X]$ nerazcepen polinom.
+  Potem je vsaka ničla $p(X)$ (v katerikoli razširitvi) enostavna. 
+\end{izrek}
+
+\begin{dokaz}
+  Naj bo $a \in E$ ničla $p(X)$. Potem je zaradi nerazcepnosti $p$ minimalni polinom elementa $a$.
+  Sedaj denimo, da $a$ ni enostavna ničla $p(X)$. Potem je $a$ tudi ničla polinoma $p'(X)$, ki je eno stopnjo 
+  nižji od $p$. To pa je protislovje s tem, da je $p(X)$ minimalni polinom $a$.
+\end{dokaz}
+
+\subsection{Razpadna polja}
+
+V tem razdelku odgovoirmo na vprašanje, ali ima vsak nekonstanten polinom ničle 
+(če že ne v originalnem polju, pa v kakšni razširitvi).
+
+\begin{izrek}
+  Naj bo $F$ polje in $f(X) \in F[X]$ nekonstanten polinom. Potem obstaja razširitev $F$,
+  v kateri ima $f(X)$ ničlo.
+\end{izrek}
+
+\begin{dokaz}
+  Naj bo $p(X)$ nerazcepen polinom, ki deli $f(X)$ (ta obstaja, saj je vsak nekonstanten polinom produkt nerazcepnih faktorjev).
+  Definiramo $I = (p(X))$, $E = \quot{F[X]}{I}$ in ker je $p(X)$ nerazcepen, je $E$ polje.
+  Sedaj definiramo vložitev $\varphi: F \to E$ s predpisom $\varphi(t) = t + I$.
+  Tako lahko $E$ obravnavamo kot razširitev $F$. Za poljuben polinom $g(X) \in F[X]$, kjer je 
+  $g(X) = t_0 + t_1 X + \dots + t_n X^n$, imamo 
+  \begin{align*}
+    g(X + I) &= (t_0 + I) + (t_1 + I) (X + I) + \dots + (t_n + I) (X + I)^n\\
+    &= t_0 + t_1 X + \dots + t_n X^n + I\\
+    &= g(X) + I.
+  \end{align*}
+  Če sedaj v to vstavimo polinom $f(X)$ namesto $g(X)$, dobimo $f(X + I) = f(X) + I = 0$,
+  torej je $X + I \in E$ ničla $f$.
+\end{dokaz}
+
+\begin{izrek}
+  Naj bo $f(X) \in F[X]$ nekonstanten polinom. Potem obstaja razširitev $E$ polja $F$ in taki elementi $a_1, a_2, \dots, a_n \in E$,
+  da je $f(X) = c (X - a_1) \dots (X - a_n)$, kjer je $c \in F$.
+\end{izrek}
 
 \end{document}
