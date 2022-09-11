@@ -4264,4 +4264,230 @@ V tem razdelku odgovoirmo na vprašanje, ali ima vsak nekonstanten polinom ničl
   da je $f(X) = c (X - a_1) \dots (X - a_n)$, kjer je $c \in F$.
 \end{izrek}
 
+\begin{definicija}
+  Naj bo $f(X) \in F[X]$. Pravimo, da ta polinom razpade v razširitvi $E$ polja $F$, če obstajajo taki $a_1, \dots, a_n \in E$,
+  da je $f(X) = c (X - a_1) \dots (X - a_n)$. Če $f(X)$ razpade v $E$ in ne razpade v nobenem pravem podpolju $E$,
+  potem $E$ imenujemo razpadno polje polinoma $f(X)$ nad $F$.
+\end{definicija}
+
+\begin{izrek}
+  Za vsak polinom $f(X) \in F[X]$ stopnje najmanj $1$ obstaja razpadno polje nad $F$.
+\end{izrek}
+
+\begin{dokaz}
+  Naj bo polje $E$ in $a_1, \dots, a_n$ kot v prejšnjem izreku. Potem je razpadno polje $f(X)$ nad $E$ kar $F(a_1, \dots, a_n)$.
+  Dokaz je očiten. 
+\end{dokaz}
+
+\begin{zgled}
+  Naj bo $f(X) = X^2 + 1$. Kaj je njegovo razpadno polje?
+  \begin{itemize}
+    \item Razpadno polje nad $\Z_2$ je kar $\Z_2$ sam, saj je $f(X) = X^2 + 1 = (X + 1)^2$.
+    \item Razpadno polje nad $\C$ je $\C$.
+    \item Razpadno polje nad $\R$ je prav tako $\C$.
+    \item Razpadno polje nad $\Q$ je $\Q (i)$.
+  \end{itemize}
+\end{zgled}
+
+\begin{opomba}
+  Razpadno polje nad $F$ je končna razširitev $F(a_1, \dots, a_n)$,
+  saj so $a_1, \dots, a_n$ ničle polinoma $f(X)$ in so zato algebraični.
+\end{opomba}
+
+Naj bo $E$ razširitev $F$ in $p(X) \in F[X]$ nerazcepen polinom z ničlo $a \in E$.
+Definiramo evalvacijski homomorfizem $\varepsilon : F[X] \to F(a)$ s predpisom 
+$\varepsilon (f(X)) = f(a)$. Seveda je $\varepsilon$ surjektiven in njegovo jedro je ideal $(p(X))$,
+saj je $p$ nerazcepen. Po izreku o izomorfizmu je $\quot{F[X]}{(p(X))} \cong F(a)$ in ta izomorfizem je 
+$\overline{\varepsilon} : \quot{F[X]}{(p(X))} \to F(a)$, ki slika $\lambda + (p(X))$ v $\lambda$, kjer je $\lambda \in F$,
+in $X + (p(X))$ v $a$.
+
+\begin{center}
+  \adjustbox{scale=1.5,center}{
+  \begin{tikzcd}
+    F[X] \arrow[r, "\pi"] \arrow[dr, "\varepsilon"]
+      & \quot{F[X]}{(p(X))} \arrow[d, dashed, "\overline{\varepsilon}"]\\
+      & F(a)
+  \end{tikzcd}}  
+\end{center}
+
+Naj bo sedaj $\varphi: F \to F'$ izomorfizem.
+Trdimo, da lahko $\varphi$ razširimo na izomorfizem $F[X] \to F'[X]$, ki slika 
+$$\lambda_0 + \lambda_1 X + \dots + \lambda_n X^n \mapsto \underbrace{\varphi(\lambda_0) + \varphi(\lambda_1) X + \dots + \varphi(\lambda_n) X^n}_{f_\varphi (X)}.$$
+Dokaz je popolnoma rutinski.
+
+\begin{lema}
+  Naj bo $p(X) \in F[X]$ nerazcepen in $a$ njegova ničla v neki razširitvi polja $F$.
+  Če je kot prej $\varphi: F \to F'$ izomorfizem polj in $a'$ ničla polinoma $p_\varphi(X)$ v neki razširitvi,
+  potem obstaja tak izomorfizem $\Phi : F(a) \to F'(a)$, da je $\Phi$ razširitev $\varphi$
+  in $\Phi(a) = a'$.
+\end{lema}
+
+\begin{center}
+  \adjustbox{scale=1.5,center}{
+  \begin{tikzcd}
+    \quot{F[X]}{(p(X))} \arrow[d, "\tilde{\varphi}"] \arrow[r, "\overline{\varepsilon}"]
+      & F(a) \arrow[d, dashed, "\Phi"]\\
+    \quot{F[X]}{(p_{\varphi}(X))} \arrow[r, "\overline{\varepsilon'}"]
+      & F(a')
+  \end{tikzcd}}  
+\end{center}
+
+\begin{dokaz}
+  Naj bosta $\overline{\varepsilon}$ in $\overline{\varepsilon'}$ kot prej (tudi polinom $p_\varphi (X)$ je 
+  namreč nerazcepen). Sedaj pa definiramo preslikavo $\tilde{\varphi}$ s predpisom 
+  $$\tilde{\varphi} (f(X) + (p(X))) = f_\varphi (X) + (p_\varphi (X))$$ in takoj lahko preverimo, da 
+  je ta preslikava dobro definirana in izomorfizem. Nato pa definiramo še $\Phi := \overline{\varepsilon'} \circ \tilde{\varphi} \circ \overline{\varepsilon} ^{-1}$
+  in očitno je, da zadošča vsem želenim lastnostim.
+\end{dokaz}
+
+\begin{izrek}
+  Naj bo $f(X) \in F[X]$ nekonstanten polinom in $E$ njegovo razpadno polje. 
+  Če je $\varphi: F \to F'$ izomorfizem polj in je $E'$ razpadno polje polinoma $f_\varphi(X) \in F'[X]$,
+  potem lahko $\varphi$ razširimo do izomorfizma iz $E$ v $E'$.
+\end{izrek}
+
+\begin{dokaz}
+  Naredimo indukcijo na $n = [E : F]$ (vemo že, da je to končno število).
+  V baznem koraku $n = 1$ je $E = F$, torej $f(X)$ razpade v $F$ in potem tudi $f_\varphi (X)$
+  razpade v $F[X]$, zato je $\Phi = \varphi$. Sedaj dokažimo še induktivni korak $n > 1$;
+  ker $f(X)$ ne razpade v $F$, ima vsaj en nerazcepen faktor stopnje več od $1$ (recimo mu $p(X)$).
+  Potem obstaja ničla $a \in E$ polinoma $p(X)$ in podobno ničla $a' \in E'$ polinoma $p_\varphi(X)$.
+  Potem po lemi obstaja izomorfizem $\Phi: F(a) \to F'(a')$, kjer je $\Phi\big|_F = \varphi$ in $\Phi(a) = a'$.
+  Ker je po konstrukciji $\mathrm{st} (p(X)) > 1$ in velja $[E : F] = [E : F(a)] [F(a) : F]$, je $[E : F(a)] < n$.
+  Ker je $E$ razpadno polje $f(X)$ nad $F$, je tudi razpadno polje nad $F(a)$.
+  Podobno je $E'$ razpadno polje $f_\varphi(X)$ nad $F'(a)$.
+  Sedaj pa lahko po indukcijski predpostavki $\Phi$ razširimo do izomorfizma iz $E$ v $E'$ in ker je že $\Phi$
+  razširitev $\varphi$, je s tem izrek dokazan.
+\end{dokaz}
+
+\begin{posledica}
+  Poljubni razpadni polji istega polinoma $f(X) \in F[X]$ sta izomorfni.
+\end{posledica}
+
+\begin{definicija}
+  Polje $A$ je algebraično zaprto, če ima vsak neskončni polinom iz $A[X]$ ničlo v $A$.
+\end{definicija}
+
+Ta definicija je ekvivalentna temu, da lahko vsak nekonstanten polinom $f(X) \in A[X]$
+zapišemo kot $f(X) = c(X - a_1) \dots (X - a_n)$, kjer so $c, a_1, \dots, a_n \in A$.
+
+\begin{zgled}
+  Primer algebraično zaprtega polja je $\C$ (to nam zagotavlja osnovni izrek algebre).
+\end{zgled}
+
+\begin{lema}
+  Naj bo $F$ polje, $L$ algebraična razširitev $F$, $E$ razširitev $L$ in $x \in E$ algebraičen nad $L$.
+  Potem je $x$ algebraičen tudi nad $F$.
+\end{lema}
+
+\begin{dokaz}
+  Po predpostavki je $a_0 + a_1 x + \dots + a_n x^n = 0$ za neke $a_i \in L$, ki niso vsi $0$.
+  Seveda je $x$ algebraičen tudi nad $F(a_0, a_1, \dots, a_n)$, to polje pa je končna razširitev $F$ 
+  (saj so $a_i \in L$ in zato algebraični). Nato pa je še $(F(a_0, \dots, a_n)) (x)$ končna razširitev $F(a_0, \dots, a_n)$.
+  Končna razširitev končne razširitve je sama končna in zato algebraična nad $F$, torej je $x$ res algebraičen nad $F$.
+\end{dokaz}
+
+\begin{posledica}
+  Algebraična razširitev algebraične razširitve je tudi sama algebraična.
+\end{posledica}
+
+\begin{definicija}
+  Naj bo $F$ polje. Polje $\overline{F}$ je njegovo algebraično zaprtje, če je:
+  \begin{itemize}
+    \item $\overline{F}$ je algebraično zaprto
+    \item $\overline{F}$ e algebraična razširitev polja $F$.
+  \end{itemize}
+\end{definicija}
+
+\begin{zgled}
+  Algebraično zaprtje $\R$ je $\C$. Kaj pa algebraično zaprtje polja $\Q$?
+\end{zgled}
+
+\begin{izrek}
+  Naj bo $F$ podpolje algebraično zaprtega polja $A$. Potem je množica vseh elementov iz $A$, ki so 
+  algebraični nad $F$, algebraično zaprtje $F$.
+\end{izrek}
+
+\begin{dokaz}
+  Ta množica (naj bo $\overline{F}$) je res polje. Naj bo $f(X) \in \overline{F}[X]$ 
+  nekonstanten polinom. Ker je $A$ algebraično zaprto, ima ničlo $x \in A$.
+  Ker je $x$ algebraičen nad $\overline{F}$, je tudi algebraičen nad $F$m, torej je $x \in \overline{F}$.
+\end{dokaz}
+
+\begin{posledica}
+  Polje algebraičnih števil je algebraično zaprtje $\Q$.
+\end{posledica}
+
+Izkaže se, da ima vsako polje algebraično zaprtje in je algebraično zaprtje eno samo do izomorfizma natančno.
+
+\subsection{Končna polja}
+
+Od končnih polj poznamo le polja $\Z_p$. Vsako končno polje ima očitno končno karakteristiko,
+torej karakteristiko $p$, kjer je $p$ neko praštevilo. Vemo, da lahko $\Z_p$ vložimo v polje s karakteristiko $p$.
+Če je $E$ torej končno polje, obstaja vložitev $\Z_p$ v $E$ in je $E$ torej razširitev $\Z_p$;
+med drugim je $E$ končnorazsežen vektorski prostor nad $\Z_p$. 
+
+\begin{lema}
+  Če je $E$ končno polje s karakteristiko $p$, je $|E| = p^n$ za nek $n \in \N$.
+\end{lema}
+
+\begin{dokaz}
+  Naj bo $\{b_1, \dots, b_n\}$ baza $E$ nad $\Z_p$.
+  Potem lahko vsak element iz $E$ na enoličen način zapišemo kot 
+  $$\lambda_1 b_1 + \lambda_2 b_2 + \dots + \lambda_n b_n,\quad \lambda_i \in \Z_p.$$
+  Vsah takih zapisov pa je $|\Z_p|^n = p^n.$
+\end{dokaz}
+
+\begin{opomba}
+  Iz dokaza leme vidimo, da je $[E : \Z_p] = n$ natanko tedaj, ko je $|E| = p^n$.
+\end{opomba}
+
+Razpadna polja polinomov so končne razširitve in preko teh bomo morda lahko skonstruirali 
+polja s $p^2, p^3, \dots$ elementi.
+
+\begin{lema}
+  Če je $E$ polje s $p^n$ elementi, je $E$ razpadno polje polinoma $X^{p^n} - X \in \Z_p [X]$.
+\end{lema}
+
+\begin{dokaz}
+  Vemo, da je $|E| = p^n$ in $E^* = E \setminus \{0\}$ grupa za množenje.
+  Ker je $|E| = p^n - 1$, je po Lagrangevem izreku $x^{p^n - 1} = 1$
+  za vsak $x \in E^*$. Torej je $x^{p^n} = x$ za vsak $x \in E$.
+  To pomeni, da je vsak element $E$ ničla polinoma $X^{p^n} - X \in \Z_p [X]$.
+  To pa je polinom stopnje $p^n$, kar pa je ravno število elementov v $E$, torej je $E$ 
+  res razpadno polje tega polinoma.
+\end{dokaz}
+
+Če je $K$ komutativen kolobar s karakteristiko $p$, potem preslikavo $\varphi: K \to K$
+s predpisom $\varphi(x) = x^p$ imenujemo Frobeniusov endomorfizem. Da je res endomorfizem, se zlahka prepričamo,
+pri tem pa tudi dokažemo formulo $x^p + y^p = (x + y)^p$ ("`Freshman's dream"'), ki velja v takih kolobarjih.
+
+\begin{lema}
+  Razpadno polje polinoma $f(X) = X^{p^n} - X$ nad $\Z_p$ ima $p^n$ elementov.
+\end{lema}
+
+\begin{dokaz}
+  Naj bo $E$ to polje in označimo $$E_* = \{x \in E\ |\ x^{p^n} = x\} = \{x \in E \ |\ \varphi^n (x) = x\},$$
+  torej je to množica fiksnih točk endomorfizma $E$.
+  Lahko je pokazati, da je to podpolje $E$. Množica vseh ničel je torej že sama polje,
+  zato je razpadno polje in velja $E = E_*$. Dokazati moramo le še, da so vse ničle $f(X)$ različne.
+  Ker je $f(X) = X (X^{p^n - 1} - 1)$, je $0$ očitno enostavna ničla.
+  Naj bo sedaj $a \neq 0$ poljubna ničla $f(X)$, torej je ničla $X^{p^n - 1} - 1$ in zato velja $a^{p^n - 1} - 1$. Od tod sledi
+  \begin{align*}
+    f(X) &= X^{p^n} - X = X (X^{p^n - 1} - a^{p^n - 1})\\
+    &= (X - a) \underbrace{(X^{p^n - 1} + X^{p^n - 2} a + \dots + X a^{p^n - 2})}_{g(X)}
+  \end{align*}
+  in imamo 
+  \begin{equation*}
+    g(a) = (p^n - 1) a^{p^n - 1} = p^n - 1 = - 1 \neq 0. \qedhere
+  \end{equation*}
+\end{dokaz}
+
+Iz zadnjih treh lem, obstoja razpadnega polja in njegove enoličnosti pa direktno sledi naslednji izrek.
+
+\begin{izrek}
+  Za vsako praštevilo $p$ in naravno število $n \in \N$ obstaja polje $\mathrm{GF} (p^n)$ s $p^n$ elementi.
+  Vsako končno polje je izomorfno enemu izmed teh polj.
+\end{izrek}
+
 \end{document}
