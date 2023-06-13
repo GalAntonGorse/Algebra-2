@@ -114,7 +114,7 @@
   coltext=black,
   colback=white, 
   fontupper=\rmfamily,
-  parbox=false,
+  %parbox=false,
   noparskip,
   sharp corners,
   boxrule=-1pt,  % width of the box' edges
@@ -134,8 +134,8 @@
   ]}
 {\endtcolorbox}
 
-\newenvironment{definicija}{\begin{defi}\begin{noticeB}}{%
-    \end{noticeB}\end{defi}}
+\newenvironment{definicija}{\begin{noticeB}\begin{defi}}{%
+    \end{defi}\end{noticeB}}
 
 {\theoremstyle{remark}
 \newtheorem*{opomba}{Opomba}
@@ -169,6 +169,8 @@
   after skip=2.5ex plus 2pt
 }
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newenvironment{noticeC}{%
   \tcolorbox[%
@@ -178,7 +180,7 @@
   breakable,
   coltext=black, 
   fontupper=\rmfamily,
-  parbox=false,
+  %parbox=false,
   noparskip,
   sharp corners,
   boxrule=-1pt,  % width of the box' edges
